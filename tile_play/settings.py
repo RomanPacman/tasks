@@ -45,10 +45,19 @@ class GameColors:
 
 
 class PlayerSettings:
-    def __init__(self, x=0, y=0, color=(0, 255, 0), radius=GameSettings.tile_size // 3, speed=2):
+    def __init__(self, x=0, y=0, color=(0, 255, 0), radius=GameSettings.tile_size // 3, speed=3):
         self.color = color  # Цвет игрока
         self.radius = radius  # Радиус игрока
+
+        self.height = 150
+        self.width = 100
+
         self.speed = speed  # Скорость игрока
+        self.g_speed = 0.2
+        self.jump_power = 10
+        self.double_jump = False
+        self.course = 0
+
         self.player_position = [x, y]
         self.run = False
         self.speed_x = 0
@@ -71,3 +80,9 @@ class PlayerSettings:
 
     def left(self):
         return [self.player_position[0] - self.radius, self.player_position[1]]  # Возвращает координату left
+
+    def get_rect(self):
+        x = self.player_position[0] - GameSettings.tile_size / 2
+        y = self.player_position[1] - GameSettings.tile_size
+        # print(x,y)
+        return [x, y, self.width, self.height]
