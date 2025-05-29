@@ -30,12 +30,12 @@ def update_grid():
             neighbors = count_neighbors(row, col)
             # Правила "Жизнь"
             if grid[row][col]:
-                if neighbors < 2 or neighbors > 3:
+                if neighbors < 3 or neighbors > 6:
                     new_grid[row][col] = False
                 else:
                     new_grid[row][col] = True
             else:
-                if neighbors == 3:
+                if neighbors == 6:
                     new_grid[row][col] = True
     grid = new_grid
 
